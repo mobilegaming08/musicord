@@ -17,4 +17,4 @@ First, follow the instructions [here](https://github.com/SinisterRectus/Discordi
 - ``audio.skip``          to skip the playing video and go on with the next item on the YouTube playlist
 
 ## To-Do for Xieve:
-A queue for audio.play (Hopefully very soon, it's been almost 2 years. ;-;)
+A queue for audio.play (Hopefully very soon, it's been 2 years. ;-;)

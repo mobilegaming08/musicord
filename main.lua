@@ -12,11 +12,6 @@ local channel
 local playingURL = ''
 local playingTrack = 0
 
-if not args[2] then
-  print("Please specify a token.")
-  os.exit()
-end
-
 local function getStream(url)
 
   local child = spawn('youtube-dl', {
@@ -105,12 +100,9 @@ local streamPlaylist = coroutine.wrap(function(url, beginWith)
   end
 end)
 
-client.voice:loadOpus('libopus-x86')
-client.voice:loadSodium('libsodium-x86')
-
 client:on('ready', function()
   p('Logged in as ' .. client.user.username)
-  channel = client:getVoiceChannel('') -- channel ID goes here
+  channel = client:getChannel('535696159403147266') --This may not work so it's best to summon the bot with audio.play
 end)
 
 client:on('messageCreate', function(message)
@@ -124,7 +116,7 @@ client:on('messageCreate', function(message)
         playingURL = string.gsub(msg.content, 'audio%.play ', '')
         local stream = getStream(playingURL) -- URL goes here
         print('playing')
-        connection:playFile(stream)
+        connection:playFFmpeg(stream)
       end
     elseif string.find(msg.content, 'audio%.playlist ') then
       playingURL = string.gsub(msg.content, 'audio%.playlist ', '')
@@ -140,4 +132,4 @@ client:on('messageCreate', function(message)
   end
 end)
 
-client:run(args[2])
+client:run ('Bot YOUR_TOKEN_HERE')
